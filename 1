@@ -1,0 +1,15 @@
+from kivymd.uix.screen import MDScreen
+class RecipeScreen(MDScreen):
+
+    counter = 4
+
+    def increase(self):
+        self.counter += 1
+        self.ids['counter_text'].text = str(self.counter)
+
+    def decrease(self):
+        if self.counter <= 1:
+            pass
+        else:
+            self.counter -= 1
+            self.ids['counter_text'].text = str(self.counter)
