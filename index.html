@@ -1,15 +1,30 @@
-from kivymd.uix.screen import MDScreen
-class RecipeScreen(MDScreen):
+MDCard:
+    elevation: 5
+    border_radius: 15
+    radius: [15]
+    size_hint: None, None
+    size: 250, 90
 
-    counter = 4
+    MDGridLayout:
+        cols: 3
 
-    def increase(self):
-        self.counter += 1
-        self.ids['counter_text'].text = str(self.counter)
+        MDBoxLayout:
+            adaptive_width: True
 
-    def decrease(self):
-        if self.counter <= 1:
-            pass
-        else:
-            self.counter -= 1
-            self.ids['counter_text'].text = str(self.counter)
+            MDIconButton:
+                icon: 'minus-box-outline'
+                pos_hint: {'center_y': .5, 'center_x': .5}
+                on_press: root.decrease()
+        MDLabel:
+            id: counter_text
+            font_style: 'Subtitle2'
+            text: '4'
+            halign: 'center'
+
+        MDBoxLayout:
+            adaptive_width: True
+
+            MDIconButton:
+                icon: 'minus-box-outline'
+                pos_hint: {'center_y': .5, 'center_x': .5}
+                on_press: root.increase()
